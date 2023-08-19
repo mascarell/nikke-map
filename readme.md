@@ -1,5 +1,7 @@
 # Interacive map for NIKKE Goddess of Victory.
 
+## Link to embed on your site -> https://nikke-map.onrender.com/
+
 I made it open source and hosted on render.com so anyone can embed it on their own websites.
 
 If you attribute it's cool ([Loot & Waifus](https://www.youtube.com/@lootandwaifus)) but it's not required.
