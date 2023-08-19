@@ -1,5 +1,7 @@
 # Interacive map for NIKKE Goddess of Victory.
 
+Any questions on how the map works or want to send me higher quality pictures for the maps? Contact me in Discord (sefhi)
+
 ## Link to embed on your site -> https://nikke-map.onrender.com/
 
 I made it open source and hosted on render.com so anyone can embed it on their own websites.
