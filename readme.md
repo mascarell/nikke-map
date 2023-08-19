@@ -1,0 +1,13 @@
+Interacive map for NIKKE Goddess of Victory.
+
+I made it open source and hosted on render.com so anyone can embed it on their own websites.
+
+If you attribute it's cool (Loot & Waifus website or YT channel) but it's not required.
+
+By the community for the community.
+
+To run the project locally just clone and open index.html, simple project using leaflet.js for the map.
+
+*If you are in development mode and want to add new markers*, there's a function in line 86 or so to add markers on mouse click.
+
+Just make sure to comment it before doing a pull request again.
