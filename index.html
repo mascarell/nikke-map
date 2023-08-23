@@ -54,7 +54,7 @@
 			}).fitBounds([[0, 0], [1074, 1920]]);
 
 			let chapters = [];
-			for (let i = 1; i <= 20; i++) {
+			for (let i = 1; i <= 24; i++) {
 				chapters[i] = L.layerGroup();
 				if (i === 1) chapters[i].addTo(map);
 
@@ -88,7 +88,7 @@
 			// map.on("click", function(e){
 			// 	let position = xy(e.latlng.lng, e.latlng.lat);
 			// 	let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
-			// 	console.log(`[${position.lng}, ${position.lat}]`);
+			// 	console.log(`[chapter, [${position.lng}, ${position.lat}], ''],`);
 			// });
 
 			// full list of lost relics, the biggest part of the code, sadly with wordpress can't really have this somewhere else without breaking my head on the wall
@@ -127,8 +127,8 @@
 				[4, [996, 946.53125], 'Good Day Commander- After World'],
 				[4, [945, 915.03125], 'Generator Blueprint'],
 				[4, [1007.5, 780.03125], 'Floral Tribute – Wandering Soul'],
-				[4, [694.53125, 915], 'Armory Blueprint'],
-				[4, [801.03125, 627.5], 'Incoming rapture – Wandering Soul'],
+				[4, [913, 692.5], 'Armory Blueprint'],
+				[4, [629.5, 804.5], 'Incoming rapture – Wandering Soul'],
 				[4, [625.5, 530.53125], 'Chat Log_Early Adopter.txt – 05:37 PM'],
 
 				// chapter 5
@@ -139,7 +139,7 @@
 				[5, [813.0001658952062, 763.0312902170197], 'Library Blueprint'],
 				[5, [483.5, 733.53125], 'Survival Guide 01 – 3. How to sleep'],
 				[5, [617, 829.03125], 'Silver mane – Wonderland'],
-				[5, [695, 856.03125], 'Hospital Blueprint'],
+				[5, [709, 929], 'Hospital Blueprint'],
 				[5, [837.5, 913.53125], 'Nikke Subject Recruitment – Outline for Round 2 of Recruitment'],
 				[5, [927.5, 921.03125], 'The Ark – After World'],
 				[5, [1189, 872.53125], 'Call Log 017515 – 4:17 PM'],
@@ -162,7 +162,7 @@
 				[7, [1292.5, 533.53125], 'Courthouse Blueprint'],
 				[7, [874, 660.53125], 'Survival Guide 01 – 2. How to Secure Food'],
 				[7, [687.5, 746.03125], 'Nikke Subject Recruitment – Outline for Round 1 of Recruitment'],
-				[7, [1030, 979.03125], 'Church Blueprint'],
+				[7, [873, 1000], 'Church Blueprint'],
 				[7, [869, 933.53125], 'Survival Guide 01 – 4. How to Deal With Strangers'],
 				[7, [787.5, 819.03125], 'Below zero [Scenario Ver. ] – White Snow'],
 				[7, [597.5, 941.03125], 'Artificial Shangri-La – After World'],
@@ -305,6 +305,70 @@
 				[16, [1188.2499999776066, 970.9374999324828], 'Shopping Lists – Monday Last XX Mart Remains'],
 				[16, [1320.25, 890.9375], 'Marry Bad – Lost Tales'],
 				[16, [1554.25, 882.4375], 'Enterprise Rapture Conspiracy Theory – National Security Email The Ark is just another hell!'],
+
+				// chapter 17
+				[17, [1256, 902], 'Climate Change Report – January 30, xx.'],
+				[17, [1434, 970], 'Enterprise-Rapture Conspiracy Theory – National Security Email Millis Industry is the root of all evil!'],
+				[17, [1124.5, 954], 'Black Gunsmoke – Eternal Scar'],
+				[17, [1089.5, 793], 'Climate Change Report – April 5, xx.'],
+				[17, [1146.5, 722.5], 'Frost Pillar [Scenario Ver.]'],
+				[17, [1270.5, 689], 'White Snow [The Pilgrim]'],
+				[17, [1551, 675.5], 'Climate Change Report – June 27, xx.'],
+				[17, [1090, 564.5], 'Enterprise Rapture Conspiracy Theory – National Security Email Missilis, Elysion, and Tetra are accomplices!'],
+				[17, [954.5, 538.5], 'Here Comes Trouble – Folk Tale'],
+				[17, [667.5, 559.5], 'Black Smoke [Scenario Ver] – Eternal Scar'],
+				[17, [673.5, 696], 'Shape of Hope – Folk Tale'],
+				[17, [354.5, 667.5], 'Climate Change Report – December 15, xx.'],
+				[17, [803.5, 796], 'Climate Change Report – September 3, xx'],
+				[17, [708, 910], 'Metal Acid – Eternal Scar'],
+
+				// chapter 18
+				[18, [1269.5, 254.5], 'Doctor’s Memoir – September 9 XX'],
+				[18, [1053, 427], 'Underwater Flowers – Eternal Scars'],
+				[18, [1238, 481], 'Nikke Manufacturing Report Summary – Experiment Report 1A-547'],
+				[18, [1338.5, 733.5], 'The Wings of Victory [Inst Ver. ] – Eternal Scar'],
+				[18, [1419.5, 768], 'Crawling Anxiety – Folk Tale'],
+				[18, [1169.5, 878.5], 'A Doctor’s Memoir – October 11, XX.'],
+				[18, [847, 930.5], 'Girl’s Talk – Folk Tale'],
+				[18, [670.5, 728], 'Doctor’s Memoir – October 15'],
+				[18, [667.5, 655], 'Sunny Carnival – Folk Tale'],
+				[18, [935.5, 623], 'Nikke Manufacturing Report Summary – Experiment Report 1A-1627'],
+				[18, [417.5, 495.5], 'Destined to Fight- Folk Tale'],
+				[18, [407, 413], 'A Doctor’s Memoir- December 8, XX.'],
+				[18, [903, 514], 'Nikke Manufacturing Report Summary – Experiment Report 2D-33'],
+				[18, [825, 284], 'Hero – Eternal Scar'],
+
+				// chapter 19
+				[19, [1109, 241.5], 'Daily Ark News Scrap – Nov 19, 14:52'],
+				[19, [1127, 593.5], '17000 Credits'],
+				[19, [1031, 578], 'Peripeteia – Morning Star'],
+				[19, [850, 435.5], 'Daily Ark News Scrap – July 9, 15:11'],
+				[19, [888, 593], 'Jonathan_report – day51.mp4'],
+				[19, [1388.5, 589.5], '17000 Credits'],
+				[19, [1258, 801.5], 'Jonathan_report – day55.mp4'],
+				[19, [1201.5, 899.5], 'Die Hard – Morning Star'],
+				[19, [995.5, 943], 'Another Way – Morning Star'],
+				[19, [882.5, 939], '34000 Credits'],
+				[19, [684.5, 770], '50 Gems'],
+				[19, [838, 770], 'Exiter – Morning Star'],
+				[19, [673, 567], 'Daily Ark News Scrap – May 3, 17:20'],
+				[19, [1053, 759.5], 'Peripeteia[Scenario Ver.] – Morning Star'],
+
+				// chapter 20
+				[20, [1454, 826.5], 'x18000 Credits'],
+				[20, [1330.5, 803], 'Jonathan_Report – day 48.mp4'],
+				[20, [1548.5, 559.5], 'Jonathan_Report – daywhatever.mp4'],
+				[20, [1469.5, 397.5], 'Eden – Morning Star'],
+				[20, [1042, 683], 'x18000 Credits'],
+				[20, [1007.5, 734], 'Daily Ark News Scrap'],
+				[20, [791.5, 789.5], 'Volcanic Nest – Morning Star'],
+				[20, [609.5, 666.5], 'Volcanic Nest [Scenario Ver.] – Morning Star'],
+				[20, [615, 748], 'Daily Ark News Scrap'],
+				[20, [564, 821.5], 'Jonathan_Report – day 59.mp4'],
+				[20, [666.5, 639.5], 'x18000 Credits'],
+				[20, [796.5, 456], 'x18000 Credits'],
+				[20, [601, 417], 'Rising from the Ash – Morning Star'],
+				[20, [474.5, 443], 'Inferno of Nihilist – Morning Star'],
 			];
 
 			for (const [chapter, coords, popupContent] of normalLostRelics) {
