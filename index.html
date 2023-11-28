@@ -134,7 +134,7 @@
 			}).fitBounds([[0, 0], [1074, 1920]]);
 
 			let chapters = [];
-			for (let i = 1; i <= 24; i++) {
+			for (let i = 1; i <= 26; i++) {
 				chapters[i] = L.layerGroup();
 				if (i === 1) chapters[i].addTo(map);
 
@@ -149,6 +149,12 @@
 
 			let markerIcon = L.icon({
 				iconUrl: `images/marker.png`,
+				iconSize: [50, 50],
+				iconAnchor: [22, 28],
+				popupAnchor: [-0, -25]
+			});
+			let markerHardIcon = L.icon({
+				iconUrl: `images/markerHard.png`,
 				iconSize: [50, 50],
 				iconAnchor: [22, 28],
 				popupAnchor: [-0, -25]
@@ -168,25 +174,33 @@
 			// map.on("click", function(e){
 			// 	let position = xy(e.latlng.lng, e.latlng.lat);
 			// 	let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
-			// 	console.log(`[chapter, [${position.lng}, ${position.lat}], ''],`);
+			// 	console.log(`[chapter, [${position.lng}, ${position.lat}], '<strong>Hard campaign:</strong> ', 'hard'],`);
 			// });
 
 			// full list of lost relics, the biggest part of the code, sadly with wordpress can't really have this somewhere else without breaking my head on the wall
 			// format => [chapter number, coordinates, popup content]
 			const normalLostRelics = [
-				// chapter 1
+				// chapter 1 normal
 				[1, [686, 610.65625], 'Commander Recruitment Announcement – Outline for Round 1 of Recruitment', 'normal'],
 				[1, [1057, 815.65625], 'Commander Recruitment Announcement – Outline for Round 2 of Recruitment', 'normal'],
 				[1, [821, 969.65625], 'Commander Recruitment Announcement – Outline for Round 3 of Recruitment', 'normal'],
+        // hard mode
+        [1, [401, 651], '<strong>Hard campaign:</strong> Mystery- Living Land', 'hard'],
+        [1, [1539, 356], '<strong>Hard campaign:</strong> 50x gems', 'hard'],
+        [1, [871, 1009], '<strong>Hard campaign:</strong> Emergency- Living Land', 'hard'],
 
-				// chapter 2
+				// chapter 2 normal
 				[2, [1330, 570.65625], 'Gems x100', 'normal'],
 				[2, [1155, 647.65625], 'A Man’s Memoir – February 7, XX', 'normal'],
 				[2, [1105, 968.65625], '11:05 AM', 'normal'],
 				[2, [584, 800.65625], 'A Man’s Memoir – December 5, XX', 'normal'],
 				[2, [643, 985.65625], 'A Man’s Memoir- August 21, XX', 'normal'],
+        // hard mode
+        [2, [990.5, 644], '<strong>Hard campaign:</strong> Recognition – Living Land', 'hard'],
+        [2, [902, 964], '<strong>Hard campaign:</strong> Bullet Storm - Living Land', 'hard'],
+        [2, [583.5, 855], '<strong>Hard campaign:</strong> Extreme Tunnel Destroyer – Living Land', 'hard'],
 
-				// chapter 3
+				// chapter 3 normal
 				[3, [752.25, 426.265625], 'Observatory Blueprint', 'normal'],
 				[3, [1172.75, 305.765625], 'The Godness Fall – After World', 'normal'],
 				[3, [1069.25, 541.765625], 'Police Station Blueprint', 'normal'],
@@ -197,8 +211,13 @@
 				[3, [832.5, 903.53125], 'Toy Store Blueprint', 'normal'],
 				[3, [909.25, 985.265625], 'Risk – Wandering Soul', 'normal'],
 				[3, [379, 906.53125], 'Train Station Blueprint', 'normal'],
+        // hard mode
+        [3, [1221.5, 474], '<strong>Hard campaign:</strong> Hopeless – Wandering Soul', 'hard'],
+        [3, [793, 745.5], '<strong>Hard campaign:</strong> Risk dark side – Wandering Soul', 'hard'],
+        [3, [1178.5, 850], '<strong>Hard campaign:</strong> Fairy Tale’s End Another Side – Living Land', 'hard'],
+        [3, [552.1404396321047, 878.4670342084945], '<strong>Hard campaign:</strong> Kneel Down, Fools – Wandering Soul', 'hard'],
 
-				// chapter 4
+				// chapter 4 normal
 				[4, [791, 173.53125], 'Chat Log_Early Adopter.txt – 08:05 PM', 'normal'],
 				[4, [1486, 496.03125], '500x Credits', 'normal'],
 				[4, [1228, 627.03125], 'Workshop Blueprint', 'normal'],
@@ -210,8 +229,13 @@
 				[4, [913, 692.5], 'Armory Blueprint', 'normal'],
 				[4, [629.5, 804.5], 'Incoming rapture – Wandering Soul', 'normal'],
 				[4, [625.5, 530.53125], 'Chat Log_Early Adopter.txt – 05:37 PM', 'normal'],
+        // hard mode
+        [4, [899.5, 481.5], '<strong>Hard campaign:</strong> Slaughterer – Wandering Soul', 'hard'],
+        [4, [1065, 854], '<strong>Hard campaign:</strong> Fairy Tale’s End[IF] – Wandering Soul', 'hard'],
+        [4, [771, 783.5], '<strong>Hard campaign:</strong> Incoming rapture Air Raid – Wandering Soul', 'hard'],
+        [4, [899, 574], '<strong>Hard campaign:</strong> Floral Tribute prayer – Wandering Soul', 'hard'],
 
-				// chapter 5
+				// chapter 5 normal
 				[5, [973, 413.53125], 'Trendy Bar Blueprint', 'normal'],
 				[5, [1072, 576.03125], 'Call Log 017515 – 2:01 PM', 'normal'],
 				[5, [1445, 614.03125], 'x50 Gems', 'normal'],
@@ -223,8 +247,13 @@
 				[5, [837.5, 913.53125], 'Nikke Subject Recruitment – Outline for Round 2 of Recruitment', 'normal'],
 				[5, [927.5, 921.03125], 'The Ark – After World', 'normal'],
 				[5, [1189, 872.53125], 'Call Log 017515 – 4:17 PM', 'normal'],
+        // hard mode
+        [5, [1222, 769.5], '<strong>Hard campaign:</strong> Second Hand Digitalized – Wonder Land', 'hard'],
+        [5, [801.5, 764.5], '<strong>Hard campaign:</strong> Silver mane Snowstorm – Wonder Land', 'hard'],
+        [5, [462, 791], '<strong>Hard campaign:</strong> Land Eater – Wonder Land', 'hard'],
+        [5, [1349, 507], '<strong>Hard campaign:</strong> Stronghold – Wonder Land', 'hard'],
 
-				// chapter 6
+				// chapter 6 normal
 				[6, [781.5, 364.03125], 'Call Log 017515 – 03:42 pm', 'normal'],
 				[6, [1124.5, 484.53125], 'Cafe Blueprint', 'normal'],
 				[6, [984.5, 640.53125], 'Frost Pillar – White Snow', 'normal'],
@@ -236,8 +265,13 @@
 				[6, [990.5, 939.53125], 'Survival Guide 01 – 1. How to Avoid Raptures', 'normal'],
 				[6, [1245.5, 680.03125], 'ShowCase – After World', 'normal'],
 				[6, [1456.5, 587.53125], 'Call Log 07515 – 6:08 PM', 'normal'],
+        // hard mode
+        [6, [788.5051047556982, 699.9996741645299], '<strong>Hard campaign:</strong> Frost Pillar Another Side – White Snow', 'hard'],
+        [6, [593.5051047556982, 754.9996741645299], '<strong>Hard campaign:</strong> Labyrinth Escape Point – White snow', 'hard'],
+        [6, [1329.2581053875174, 569.7960917555363], '<strong>Hard campaign:</strong> EEEEEEEEEEE - ntertainment – Wonder Land', 'hard'],
+        [6, [1043.4555785987386, 904.9689616819257], '<strong>Hard campaign:</strong> You CAN’T STOP US – White Snow', 'hard'],
 
-				// chapter 7
+				// chapter 7 normal
 				[7, [929, 518.03125], 'Call Log 028594 – 10:01 AM', 'normal'],
 				[7, [1292.5, 533.53125], 'Courthouse Blueprint', 'normal'],
 				[7, [874, 660.53125], 'Survival Guide 01 – 2. How to Secure Food', 'normal'],
@@ -249,8 +283,14 @@
 				[7, [411, 884.53125], 'x50 Gems', 'normal'],
 				[7, [857, 1034.53125], 'Scardi [Inst Ver. ] – White Snow', 'normal'],
 				[7, [926, 1034.03125], 'x2200 Credits', 'normal'],
+        // hard mode
+        [7, [961.5, 1035.5], '<strong>Hard campaign:</strong> [Ominous Cross] – White Snow', 'hard'],
+        [7, [1100, 975.5], '<strong>Hard campaign:</strong> below zero Glitched Mix – White Snow', 'hard'],
+        [7, [422.48011475078863, 724.3502774539907], '<strong>Hard campaign:</strong> Tomboy Princess – White Snow', 'hard'],
+        [7, [602, 1010.5], '<strong>Hard campaign:</strong> x50 gems', 'hard'],
+        [7, [865.5, 977.5], '<strong>Hard campaign:</strong> Scardi – White Snow', 'hard'],
 
-				// chapter 8
+				// chapter 8 normal
 				[8, [664, 382.390625], 'A Girl’s Memoir – July 23, XX at 3:00 PM (Rainy)', 'normal'],
 				[8, [971, 662.390625], 'The Ruined City – Hand on Hand', 'normal'],
 				[8, [854, 288.890625], 'Clothing Store Blueprint', 'normal'],
@@ -263,8 +303,14 @@
 				[8, [1107, 655.890625], 'The Clue – Hand on Hand', 'normal'],
 				[8, [1179, 339.890625], 'A Girl’s Memoir – July 26, XX (Sunny)', 'normal'],
 				[8, [1371, 406.390625], 'x3200 Credits', 'normal'],
+        // hard mode
+        [8, [866, 403], '<strong>Hard campaign:</strong> The Ruined City Dying – Hand on Hand', 'hard'],
+        [8, [775, 232], '<strong>Hard campaign:</strong> The Clue Know the truth – Hand on Hand', 'hard'],
+        [8, [905, 669.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [8, [937, 871.5], '<strong>Hard campaign:</strong> The Ruined City[Scenario Ver. ] – Hand on Hand', 'hard'],
+        [8, [1241, 666], '<strong>Hard campaign:</strong> Maze in Abyss – Begin – Lost Sector', 'hard'],
 
-				// chapter 9
+				// chapter 9 normal
 				[9, [574, 824.890625], 'Pamphlet – 3. Self-Defense Training', 'normal'],
 				[9, [717, 843.890625], 'A Girl’s Memoir – July 24, XX (Cloudy)', 'normal'],
 				[9, [988.5, 929.390625], 'Radio Tower Blueprint', 'normal'],
@@ -277,8 +323,14 @@
 				[9, [792, 409.890625], 'STANDALONE – Hand on Hand', 'normal'],
 				[9, [1385.5, 520.890625], 'Standin’ by', 'normal'],
 				[9, [1263.5, 618.390625], 'A Poster Against Nikke Experiments – 3', 'normal'],
+        // hard mode
+        [9, [977, 931.5], '<strong>Hard campaign:</strong> Heart Destroyer Distorted – Hand on Hand', 'hard'],
+        [9, [1064, 615], '<strong>Hard campaign:</strong> Heart Destroyer Scenario – Hand on Hand', 'hard'],
+        [9, [1106, 699.5], '<strong>Hard campaign:</strong> Stand Alone be Strong – Hand on Hand', 'hard'],
+        [9, [1100, 515.5], '<strong>Hard campaign:</strong> Core dust x10', 'hard'],
+        [9, [1292.5, 493.5], '<strong>Hard campaign:</strong> Back and Forth discretion – Lost Sector', 'hard'],
 
-				// chapter 10
+				// chapter 10 normal
 				[10, [705.5, 846.390625], 'Call log 028594 – 02:49 PM', 'normal'],
 				[10, [774, 812.390625], 'AREA : H – Two Top', 'normal'],
 				[10, [940, 948.390625], 'Wings of Victory Blueprint', 'normal'],
@@ -291,8 +343,14 @@
 				[10, [1060, 853.890625], 'letters from a girlfriend – To J,', 'normal'],
 				[10, [1267, 762.390625], 'Take my Money!! – After World', 'normal'],
 				[10, [1299.5, 483.890625], 'Call log 028594 – 11:39 AM', 'normal'],
+        // hard mode
+        [10, [962, 902.5], '<strong>Hard campaign:</strong> Core dust x10', 'hard'],
+        [10, [1007, 1006], '<strong>Hard campaign:</strong> Khamsin Upper Mix – Two Top', 'hard'],
+        [10, [858.5, 736], '<strong>Hard campaign:</strong> Area : H heat stroke – Two Top', 'hard'],
+        [10, [1103, 323], '<strong>Hard campaign:</strong> Area : H scenario ver – Two Top', 'hard'],
+        [10, [1379, 522.5], '<strong>Hard campaign:</strong> Labyrinth of Void Deeper – Lost sector', 'hard'],
 
-				// chapter 11
+				// chapter 11 normal
 				[11, [990, 504.390625], 'Languor – Folk Tales', 'normal'],
 				[11, [1346.5, 491.390625], 'Goddess Squad Report – A', 'normal'],
 				[11, [1010, 664.390625], 'Pamphlet – 1. Delivery Service', 'normal'],
@@ -306,8 +364,14 @@
 				[11, [744, 766.890625], 'Maze in Abyss – Lost Sector', 'normal'],
 				[11, [807.5, 558.890625], 'x3200 Credits', 'normal'],
 				[11, [838, 940.890625], 'Orange Pop – Folk Tales', 'normal'],
+        // hard mode
+        [11, [981, 961.5], '<strong>Hard campaign:</strong> The Harvester – Two Top', 'hard'],
+        [11, [646.5, 790], '<strong>Hard campaign:</strong> Blurred Vision Scenario Ver – Two Top', 'hard'],
+        [11, [889, 807.5], '<strong>Hard campaign:</strong> Splinter Heated – Two Top', 'hard'],
+        [11, [1076.5, 756], '<strong>Hard campaign:</strong> Blurred Vision – Into the Matter', 'hard'],
+        [11, [707.5, 621.5], '<strong>Hard campaign:</strong> Core dust x10', 'hard'],
 
-				// chapter 12
+				// chapter 12 normal
 				[12, [1066.5, 915.390625], 'Champions Match – After World', 'normal'],
 				[12, [1224.5, 877.390625], 'Pamphlet – Real Estate Trading', 'normal'],
 				[12, [1429, 846.890625], 'Ground Fall – Red, Eye, Smile', 'normal'],
@@ -321,8 +385,14 @@
 				[12, [1477.5, 191.890625], 'Doomsday Book- Prayer for Descent', 'normal'],
 				[12, [1365.5, 360.390625], 'One- Winged Dark Lord – Red, Eye, Smile', 'normal'],
 				[12, [970.5, 500.390625], 'Goddess Squad Report – D', 'normal'],
+        // hard mode
+        [12, [1204, 966], '<strong>Hard campaign:</strong> Ground fall - Unknown Signal - Red Eye, Smile', 'hard'],
+        [12, [1502.5, 753.5], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [12, [1109.7840865755438, 769.8141677962931], '<strong>Hard campaign:</strong> Ground zero – Blaster mix – Red Eye, Smile', 'hard'],
+        [12, [878.2840865755438, 628.3141677962931], '<strong>Hard campaign:</strong> Ground fall[Scenario Ver] – Red Eye, Smile', 'hard'],
+        [12, [1087.2840865755438, 581.8141677962931], '<strong>Hard campaign:</strong> Resist – Red Eye, Smile', 'hard'],
 
-				// chapter 13
+				// chapter 13 normal
 				[13, [888.5, 391.390625], 'Ark Lottery Ticket – 1', 'normal'],
 				[13, [827, 315.890625], 'The Calm Before the Storm- Sand Storm', 'normal'],
 				[13, [609, 563.390625], 'Ark Lottery Ticket – 2', 'normal'],
@@ -337,8 +407,15 @@
 				[13, [1316, 622.890625], 'Break Away – Folk Tale', 'normal'],
 				[13, [1301.5, 872.390625], 'Ark Lottery Ticket – 4', 'normal'],
 				[13, [1341.5000002977265, 508.3906404817777], 'Mobile_Telecom Fraud_Ads_Collection.zip – Ark_Raffle Ticket_AD', 'normal'],
+        // hard mode
+        [13, [1077, 297.5], '<strong>Hard campaign:</strong> The Calm Before the Storm - Storm is coming – Sand Storm', 'hard'],
+        [13, [964, 632], '<strong>Hard campaign:</strong> x50 gems', 'hard'],
+        [13, [708.5, 658.5], '<strong>Hard campaign:</strong> The Calm Before the Storm[Scenario Ver] – Sand Storm', 'hard'],
+        [13, [664, 841.5], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [13, [840, 714.5], '<strong>Hard campaign:</strong> Dust Rider - Final Lap - Sand Storm', 'hard'],
+        [13, [1300.6983505965914, 793.7827192867455], '<strong>Hard campaign:</strong> The Moving Fortress – Sand Storm', 'hard'],
 
-				// chapter 14
+				// chapter 14 normal
 				[14, [1167.0394024253535, 989.4891982321882], 'UFO Collection. Zip – Alien Sighting', 'normal'],
 				[14, [1074.0394024253535, 871.9891982321882], 'XX High School Letters to Parents – School Letter No. XXXX-123', 'normal'],
 				[14, [1200.75, 694.4375], 'Enemy Close – Living Land', 'normal'],
@@ -353,8 +430,15 @@
 				[14, [1595.0796641546658, 500.8302261733942], 'Recognition [ Scenario Ver.] – Living Land', 'normal'],
 				[14, [1534.2409964117342, 934.374088567218], 'UFO Collection.zip – The Nuclear Solution', 'normal'],
 				[14, [1596.7409964117342, 754.874088567218], 'XX High School Letters to Parents – School letter No. XXXX-124', 'normal'],
+        // hard mode
+        [14, [1319, 1009.5], '<strong>Hard campaign:</strong> Recognition – underworld', 'hard'],
+        [14, [1197, 801.5], '<strong>Hard campaign:</strong> Leisure Time – Folk Tale', 'hard'],
+        [14, [1290, 367.5], '<strong>Hard campaign:</strong> ShopperHOLIC – Sand Storm', 'hard'],
+        [14, [1194.5, 600.5], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [14, [888.5813057766206, 879.9663383727367], '<strong>Hard campaign:</strong> Enikk’s Room – Sand Storm', 'hard'],
+        [14, [1521.0341551215731, 894.0756984103226], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
 
-				// chapter 15
+				// chapter 15 normal
 				[15, [748.25, 96.9375], 'Tragedy – Folk Tale', 'normal'],
 				[15, [967.25, 310.4375], 'XX High School Letters to Parents – School Letter No. XXXX-125', 'normal'],
 				[15, [1245.0873201845734, 368.8330771455031], 'Risk [Scenario Ver. ] Wandering Soul', 'normal'],
@@ -369,8 +453,15 @@
 				[15, [771.25, 201.4375], 'Chromosome Another Side – After World', 'normal'],
 				[15, [837.75, 658.4375], 'Playlist from the Old Times – Caught in the Rapture', 'normal'],
 				[15, [951.25, 769.4375], 'Playlist from the Old Times – Welcome to the Ark', 'normal'],
+        // hard mode
+        [15, [1169.5, 418.5], '<strong>Hard campaign:</strong> Floral Tribute[Scenario Ver.] – Wandering Soul', 'hard'],
+        [15, [1368, 678], '<strong>Hard campaign:</strong> Epic Jazzy Moods – Folk Tale', 'hard'],
+        [15, [1118.5, 686], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [15, [550, 593], '<strong>Hard campaign:</strong> Sunshine Sorrow – Folk Tale', 'hard'],
+        [15, [672.5, 234.5], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [15, [768, 669.5], '<strong>Hard campaign:</strong> Last Bullet – Folk Tale', 'hard'],
 
-				// chapter 16
+				// chapter 16 normal
 				[16, [1126.25, 274.9375], 'Storm Breakers – Folk Tale', 'normal'],
 				[16, [1271.25, 452.4375], 'Enterprise-Rapture Conspiracy Theory – National Security Email', 'normal'],
 				[16, [1200.75, 592.4375], 'x8000 Credits', 'normal'],
@@ -385,8 +476,15 @@
 				[16, [1188.2499999776066, 970.9374999324828], 'Shopping Lists – Monday Last XX Mart Remains', 'normal'],
 				[16, [1320.25, 890.9375], 'Marry Bad – Lost Tales', 'normal'],
 				[16, [1554.25, 882.4375], 'Enterprise Rapture Conspiracy Theory – National Security Email The Ark is just another hell!', 'normal'],
+        // hard mode
+        [16, [1254.9049387551981, 555.2121206607619], '<strong>Hard campaign:</strong> Back to Normal – Folk Tale', 'hard'],
+        [16, [604.2744443694667, 486.5560779110003], '<strong>Hard campaign:</strong> Who’s Dumber ? – Folk Tale', 'hard'],
+        [16, [1014.817923863296, 413.70630876900793], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [16, [843, 770], '<strong>Hard campaign:</strong> Trauma – Folk Tale', 'hard'],
+        [16, [816, 927], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [16, [1399.5, 783], '<strong>Hard campaign:</strong> Cosmos – Folk Tale', 'hard'],
 
-				// chapter 17
+				// chapter 17 normal
 				[17, [1256, 902], 'Climate Change Report – January 30, xx.', 'normal'],
 				[17, [1434, 970], 'Enterprise-Rapture Conspiracy Theory – National Security Email Millis Industry is the root of all evil!', 'normal'],
 				[17, [1124.5, 954], 'Black Gunsmoke – Eternal Scar', 'normal'],
@@ -401,8 +499,15 @@
 				[17, [354.5, 667.5], 'Climate Change Report – December 15, xx.', 'normal'],
 				[17, [803.5, 796], 'Climate Change Report – September 3, xx', 'normal'],
 				[17, [708, 910], 'Metal Acid – Eternal Scar', 'normal'],
+        // hard mode
+        [17, [913, 893], '<strong>Hard campaign:</strong> 6f6e6573656c66 – Eternal Scar', 'hard'],
+        [17, [1438.896623502486, 958.9623250097949], '<strong>Hard campaign:</strong> Tuff Guys – Folk Tale', 'hard'],
+        [17, [1468.896623502486, 759.4623250097949], '<strong>Hard campaign:</strong> Black Gunsmoke - haze shadow - Eternal Scar', 'hard'],
+        [17, [741.9345307480913, 515.2574725166953], '<strong>Hard campaign:</strong> below zero - White Snow', 'hard'],
+        [17, [656, 822.5], '<strong>Hard campaign:</strong> Motal Acid - Acid Burst - Eternal Scar', 'hard'],
+        [17, [722, 914], '<strong>Hard campaign:</strong> Armageddon – Folk Tale', 'hard'],
 
-				// chapter 18
+				// chapter 18 normal
 				[18, [1269.5, 254.5], 'Doctor’s Memoir – September 9 XX', 'normal'],
 				[18, [1053, 427], 'Underwater Flowers – Eternal Scars', 'normal'],
 				[18, [1238, 481], 'Nikke Manufacturing Report Summary – Experiment Report 1A-547', 'normal'],
@@ -417,8 +522,15 @@
 				[18, [407, 413], 'A Doctor’s Memoir- December 8, XX.', 'normal'],
 				[18, [903, 514], 'Nikke Manufacturing Report Summary – Experiment Report 2D-33', 'normal'],
 				[18, [825, 284], 'Hero – Eternal Scar', 'normal'],
+        // hard mode
+        [18, [1006, 678], '<strong>Hard campaign:</strong> Eternal Scar「Underwater Flowers – Lotus -」', 'hard'],
+        [18, [926.5, 791], '<strong>Hard campaign:</strong>  Gems ×50', 'hard'],
+        [18, [669.0001225533047, 771.499990425523], '<strong>Hard campaign:</strong> Eternal Scar「The Wings of Victory」', 'hard'],
+        [18, [562.5001225533047, 645.499990425523], '<strong>Hard campaign:</strong> Eternal Scar「Underwater Flowers[Scenario Ver.]」', 'hard'],
+        [18, [416.0001225533046, 432.49999042552304], '<strong>Hard campaign:</strong> Folk Tale「Online Shopping」', 'hard'],
+        [18, [730.5, 296], '<strong>Hard campaign:</strong> Eternal Scar「Tempest」', 'hard'],
 
-				// chapter 19
+				// chapter 19 normal
 				[19, [1109, 241.5], 'Daily Ark News Scrap – Nov 19, 14:52', 'normal'],
 				[19, [1127, 593.5], '17000 Credits', 'normal'],
 				[19, [1031, 578], 'Peripeteia – Morning Star', 'normal'],
@@ -433,8 +545,15 @@
 				[19, [838, 770], 'Exiter – Morning Star', 'normal'],
 				[19, [673, 567], 'Daily Ark News Scrap – May 3, 17:20', 'normal'],
 				[19, [1053, 759.5], 'Peripeteia[Scenario Ver.] – Morning Star', 'normal'],
+        // hard mode
+        [19, [1274, 481], '<strong>Hard campaign:</strong> Core Dust ×10', 'hard'],
+        [19, [940.5, 499], '<strong>Hard campaign:</strong> Morning Star「Die Hard – Survive -」', 'hard'],
+        [19, [1282, 694.5], '<strong>Hard campaign:</strong> Core Dust ×10', 'hard'],
+        [19, [1093.5, 886.5], '<strong>Hard campaign:</strong> Morning Star「Peripeteia – Heaven of Pride -」', 'hard'],
+        [19, [952, 958.5], '<strong>Hard campaign:</strong> Core Dust ×10', 'hard'],
+        [19, [748, 729.5], '<strong>Hard campaign:</strong> Core Dust ×10', 'hard'],
 
-				// chapter 20
+				// chapter 20 normal
 				[20, [1454, 826.5], 'x18000 Credits', 'normal'],
 				[20, [1330.5, 803], 'Jonathan_Report – day 48.mp4', 'normal'],
 				[20, [1548.5, 559.5], 'Jonathan_Report – daywhatever.mp4', 'normal'],
@@ -449,13 +568,145 @@
 				[20, [796.5, 456], 'x18000 Credits', 'normal'],
 				[20, [601, 417], 'Rising from the Ash – Morning Star', 'normal'],
 				[20, [474.5, 443], 'Inferno of Nihilist – Morning Star', 'normal'],
+        // hard mode
+        [20, [1317.5, 805], '<strong>Hard campaign:</strong> Core Dust ×10', 'hard'],
+        [20, [1174, 666.5], '<strong>Hard campaign:</strong> Morning Star「Volcanic Nest – Berserker Afire -」', 'hard'],
+        [20, [923.5, 777.5], '<strong>Hard campaign:</strong> Morning Star「Quiet Terror」', 'hard'],
+        [20, [605, 763], '<strong>Hard campaign:</strong> Morning Star「Rising from Ash – HYPE DistGuitar MIX -」', 'hard'],
+        [20, [1191.5, 448], '<strong>Hard campaign:</strong> Morning Star「Burn it All」', 'hard'],
+        [20, [528.5, 312.5], '<strong>Hard campaign:</strong> Morning Star「in EDEN」', 'hard'],
+
+        // chapter 21 normal
+        [21, [487.5, 950.5], 'Morning Star – Into the Swarm', 'normal'],
+        [21, [585.5, 807], 'x50 Gems', 'normal'],
+        [21, [351.5, 650.5], 'Anomalous Rapture Report 3', 'normal'],
+        [21, [432.5, 663], 'Anomalous Rapture Report 5', 'normal'],
+        [21, [599.5, 648.5], 'Morning Star – Cecil', 'normal'],
+        [21, [774.5, 544], 'Morning Star – Rapture Storm', 'normal'],
+        [21, [532, 1000], 'Anomalous Rapture Report 2', 'normal'],
+        [21, [738.5, 982.5], 'Anomalous Rapture Report 1', 'normal'],
+        [21, [775, 958.5], 'Anomalous Rapture Report 6', 'normal'],
+        [21, [1040.5, 878.5], 'Anomalous Rapture Report 8', 'normal'],
+        [21, [1219, 610.5], 'Anomalous Rapture Report 7', 'normal'],
+        [21, [1290, 564], 'Anomalous Rapture Report 9', 'normal'],
+        [21, [805.5, 744], 'Anomalous Rapture Report 4', 'normal'],
+        [21, [704.5, 806], 'Morning Star – Into the Swarm[Scenario Ver.]', 'normal'],
+        // hard mode
+        [21, [587, 821.5], '<strong>Hard campaign:</strong> Into the Swarm – Hive – Morning Star', 'hard'],
+        [21, [646, 749], '<strong>Hard campaign:</strong> Into the Swarm – Rush out – Morning Star', 'hard'],
+        [21, [614, 651], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [21, [635, 1022.5], '<strong>Hard campaign:</strong> The interceptor – Morning Star', 'hard'],
+        [21, [970.5, 851.5], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        [21, [1148.5, 625], '<strong>Hard campaign:</strong> x10 Core Dust', 'hard'],
+        
+        // chapter 22 normal
+        [22, [571.5, 360.5], 'Invasion – Collapse', 'normal'],
+        [22, [900.5, 355], 'Enikk Impeachment Poster “The Lord of the Ark is Human!”', 'normal'],
+        [22, [755.5, 462], 'Invasion – Collapse[Scenario Ver.]', 'normal'],
+        [22, [735, 601], '20k Credits', 'normal'],
+        [22, [399, 598], 'Enikk impeachment poster”‘Enikk is stealing jobs!”', 'normal'],
+        [22, [664, 663.5], 'Invasion – Invasion', 'normal'],
+        [22, [1098.5, 633.5], 'Folk Tale – Calling Signal', 'normal'],
+        [22, [1408.5, 704.5], 'Folk Tale – Prism', 'normal'],
+        [22, [1372, 821], 'After World – THE CHALLENGER', 'normal'],
+        [22, [1047, 954.5], 'Enikk Impeachment Poster “Enikk is a slave to the Central Government!”', 'normal'],
+        [22, [791, 691], 'Enikk Impeachment Poster “Enikk’s sentence is Unfair”', 'normal'],
+        [22, [342, 777.5], 'Invasion – “Emergency Engage”', 'normal'],
+        [22, [284.5, 745], '20k Credits', 'normal'],
+        [22, [756, 957.5], 'Enikk Impeachment Poster “Enikk is a time bomb!”', 'normal'],
+        // hard mode
+        [22, [396.5, 535.5], '<strong>Hard campaign:</strong> Collapse – shift – Invasion', 'hard'],
+        [22, [1236.5, 503], '<strong>Hard campaign:</strong> Emergency Engage – Restoration – Invasion', 'hard'],
+        [22, [1219.5, 676.5], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [22, [967.499997662642, 934.9999955122727], '<strong>Hard campaign:</strong> x50 Gems', 'hard'],
+        [22, [695.5, 855], '<strong>Hard campaign:</strong> Conflict – Invasion', 'hard'],
+        [22, [271.5, 686.5], '<strong>Hard campaign:</strong> White – Light – Invasion', 'hard'],
+
+        // chapter 23 normal
+        [23, [1128, 257], 'x50 Gems', 'normal'],
+        [23, [939, 478], 'Pilgrim Encounter Report, “Overview.”', 'normal'],
+        [23, [471, 574], 'Invasion – Grey Haze[Scenario Ver.]', 'normal'],
+        [23, [153.5, 770.5], 'x21,000 Credits', 'normal'],
+        [23, [360.5, 850.5], 'Pilgrim Encounter Report “A White Nikke”', 'normal'],
+        [23, [656.5, 795], 'x21,000 Credits', 'normal'],
+        [23, [829, 761], 'Pilgrim Encounter Report “B.A Nikke with a Camel”', 'normal'],
+        [23, [1183.5, 952.5], 'Invasion -「Grey Haze」', 'normal'],
+        [23, [1255.5, 871], 'x21,000 Credits', 'normal'],
+        [23, [1274, 799], 'Invasion – Grey Haze achromatic', 'normal'],
+        [23, [1130, 657], 'Pilgrim Encounter Report “C.A Noble Nikke and her Servant”', 'normal'],
+        [23, [1366.5, 673], 'Pilgrim Encounter Report “D.A Nikke Carrying a coffin”', 'normal'],
+        [23, [1560, 642.5], 'x21,000 Credits', 'normal'],
+        [23, [1311.5, 496.5], 'Invasion – The Coldfr0nt', 'normal'],
+        // hard mode
+        [23, [814, 438], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [23, [215, 681], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [23, [873.4971254117023, 705.5003730594422], '<strong>Hard campaign:</strong> The Warmfr0nt – Invasion', 'hard'],
+        [23, [979.4971254117023, 773.5003730594422], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [23, [1233.9941260942933, 931.4986702860172], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [23, [1471.5, 658], '<strong>Hard campaign:</strong> Face to Face – Invasion', 'hard'],
+        
+        // chapter 24 normal
+        [24, [817.5, 277], 'Invasion – Manifest[Scenario Ver.]', 'normal'],
+        [24, [821.5, 494], 'x22,000 Credits', 'normal'],
+        [24, [493, 368.5], 'x22,000 Credits', 'normal'],
+        [24, [927.5485095364637, 787.9089337487401], 'x22,000 Credits', 'normal'],
+        [24, [735.0485095364637, 642.4089337487401], 'Emergency News scripts_FB_3 final_2.pdf “Feedback 01_2”', 'normal'],
+        [24, [504.5485095364637, 672.4089337487401], 'x22,000 Credits', 'normal'],
+        [24, [275.5485095364637, 692.4089337487401], 'Emergency News scripts_FB_3 final_2.pdf “Feedback 02_4”', 'normal'],
+        [24, [392.5485095364637, 845.9089337487401], 'Emergency News scripts_FB_3 final_2.pdf “Feedback 03_2”', 'normal'],
+        [24, [1868.5, 505], 'Invasion -「Manifest」', 'normal'],
+        [24, [1520.5, 854.5], 'Emergency News scripts_FB_3 final_2.pdf “Feedback 04_1”', 'normal'],
+        [24, [1479.5, 736], 'x22,000 Credits', 'normal'],
+        [24, [1281.5, 797.5], 'x22,000 Credits', 'normal'],
+        [24, [1336.5, 902], 'Invasion – Manifest – Malfunction', 'normal'],
+        [24, [1117.5, 1031], 'Emergency News scripts_FB_3 final_2.pdf “Feedback 05_7”', 'normal'],
+        // hard mode
+        [24, [765.5, 403.5], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [24, [897.5, 708.5], '<strong>Hard campaign:</strong> Alive – Invasion', 'hard'],
+        [24, [273.11290069417635, 762.189551871689], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [24, [1370.5, 623.5], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [24, [1419, 841], '<strong>Hard campaign:</strong> x10 Core dust', 'hard'],
+        [24, [1133.419767088384, 1024.805299520707], '<strong>Hard campaign:</strong> Alive – resist – Invasion', 'hard'],
+        
+        // chapter 25 normal
+        [25, [921.1559942556826, 141.1627286680329], '50x gems', 'normal'],
+        [25, [746.5, 598.5], 'Chaser[Scenario Ver.] – Trace', 'normal'],
+        [25, [494.5, 580.5], '23000x Credits', 'normal'],
+        [25, [651, 733.5], '821222_1708', 'normal'],
+        [25, [924, 626], '23000x Credits', 'normal'],
+        [25, [800, 831.5], 'Chaser – Trace', 'normal'],
+        [25, [1024.5, 833.5], '821222_1812', 'normal'],
+        [25, [1148.5, 932.5], '23000x Credits', 'normal'],
+        [25, [1138, 470.5], '821222_2045', 'normal'],
+        [25, [1115.5, 378], 'Chaser - time limit – Trace', 'normal'],
+        [25, [1300.5, 554.5], '23000x Credits', 'normal'],
+        [25, [1154, 743.5], '23000x Credits', 'normal'],
+        [25, [1337.5, 853.5], '821222_2056', 'normal'],
+        [25, [1236, 887], 'Pursuit – Trace', 'normal'],
+
+        // chapter 26 normal
+        [26, [1109, 294.5], '24000x Credits', 'normal'],
+        [26, [1301, 619], 'March 11', 'normal'],
+        [26, [1358.5, 771], 'Highnoon[Scenario Ver.] – Trace', 'normal'],
+        [26, [1637, 836.5], '24000x Credits', 'normal'],
+        [26, [1237, 910.5], 'March 18', 'normal'],
+        [26, [1159, 972.5], 'Highnoon – Trace', 'normal'],
+        [26, [1039, 894.5], '24000x Credits', 'normal'],
+        [26, [940.5, 811], 'March 21', 'normal'],
+        [26, [455.5, 581], '24000x Credits', 'normal'],
+        [26, [656.5, 736.5], 'Tinkling', 'normal'],
+        [26, [792.5, 838], '24000x Credits', 'normal'],
+        [26, [513, 796.5], 'Crack Crack', 'normal'],
+        [26, [468, 771], 'Highnoon - Hazards - Trace', 'normal'],
+        [26, [456, 658], '24000x Credits', 'normal'],
 			];
 
-			for (const [chapter, coords, popupContent] of normalLostRelics) {
-				L.marker(xy(coords), { icon: markerIcon }).addTo(chapters[chapter]).bindPopup(popupContent, customOptions);
+			for (const [chapter, coords, popupContent, difficulty] of normalLostRelics) {
+        let currentIcon = difficulty == 'normal' ? markerIcon : markerHardIcon;
+				L.marker(xy(coords), { icon: currentIcon }).addTo(chapters[chapter]).bindPopup(popupContent, customOptions);
 			}
 
-			let chapterNames = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7", "Chapter 8", "Chapter 9", "Chapter 10", "Chapter 11", "Chapter 12", "Chapter 13", "Chapter 14", "Chapter 15", "Chapter 16", "Chapter 17", "Chapter 18", "Chapter 19", "Chapter 20"];
+			let chapterNames = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7", "Chapter 8", "Chapter 9", "Chapter 10", "Chapter 11", "Chapter 12", "Chapter 13", "Chapter 14", "Chapter 15", "Chapter 16", "Chapter 17", "Chapter 18", "Chapter 19", "Chapter 20", "Chapter 21", "Chapter 22", "Chapter 23", "Chapter 24", "Chapter 25", "Chapter 26"];
 			let chapterLayers = Object.fromEntries(chapterNames.map((name, i) => [name, chapters[i + 1]]));
 
 			L.control.layers(chapterLayers).addTo(map);
