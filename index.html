@@ -39,11 +39,91 @@
 			height: 100%;
 			background-color: transparent;
 		}
+
+    /* Tooltips */
+    /* Add this attribute to the element that needs a tooltip */
+    [data-tooltip] {
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+    }
+    /* Hide the tooltip content by default */
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+      visibility: hidden;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+      filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=0);
+      opacity: 0;
+      pointer-events: none;
+    }
+    /* Position tooltip above the element */
+    [data-tooltip]:before {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-bottom: 5px;
+      margin-left: -150px;
+      padding: 7px;
+      width: 300px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      background-color: #000;
+      background-color: #202442;
+      color: #fff;
+      content: attr(data-tooltip);
+      text-align: center;
+      font-size: 16px;
+      font-weight: initial;
+      line-height: 1.2;
+      text-shadow: none;
+    }
+    /* Triangle hack to make tooltip look like a speech bubble */
+    [data-tooltip]:after {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -5px;
+      width: 0;
+      border-top: 5px solid #000;
+      border-top: 5px solid #202442;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      content: " ";
+      font-size: 0;
+      line-height: 0;
+    }
+    /* Show tooltip content on hover */
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+      visibility: visible;
+      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: progid: DXImageTransform.Microsoft.Alpha(Opacity=100);
+      opacity: 1;
+    }
+
+    .report{
+      position: fixed;
+      bottom: 25px;
+      z-index: 999;
+      left: 100px;
+      color: black;
+      font-size: 1rem;
+      font-weight: 600;
+      background-color: #20244238;
+      padding: .5rem;
+      text-shadow:
+        1px 1px 0 #fff,
+        -1px 1px 0 #fff,
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff;
+    }
 	</style>
 </head>
 <body>
-
 	<div id="map" class="map"></div>
+
+  <div class="report" data-tooltip="If you found an error regarind Lost Relics, please send me a DM on Discord (sefhi) and I'll fix it ASAP!">I found an errror!</div>
 
 	<!-- map functionality, relics and everything else in this script -->
 	<script>
@@ -382,6 +462,5 @@
 
 			map.setView([500, 1000], 0);
 	</script>
-	
 </body>
 </html>
