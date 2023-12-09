@@ -18,6 +18,6 @@ Just make sure to comment it before doing a pull request again.
 
 Things to add:
 
-- Higher quality maps
-- Switch between normal and hard campaign maps
-- Add the rest of the campaign chapters
+- Switch between normal and hard campaign maps instead of showing all of them together
+- Add hard chapter 25 and 26
+- Add a filter for different relic types (music, gems, core dust, etc.)
