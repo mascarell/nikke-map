@@ -171,11 +171,11 @@
 			};
 
 			// ONLY FOR DEVELOPMENT, click to add marker
-			// map.on("click", function(e){
-			// 	let position = xy(e.latlng.lng, e.latlng.lat);
-			// 	let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
-			// 	console.log(`[chapter, [${position.lng}, ${position.lat}], '<strong>Hard campaign:</strong> ', 'hard'],`);
-			// });
+			map.on("click", function(e){
+				let position = xy(e.latlng.lng, e.latlng.lat);
+				let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
+				console.log(`[chapter, [${position.lng}, ${position.lat}], '<strong>Hard campaign:</strong> ', 'hard'],`);
+			});
 
 			// full list of lost relics, the biggest part of the code, sadly with wordpress can't really have this somewhere else without breaking my head on the wall
 			// format => [chapter number, coordinates, popup content]
@@ -206,11 +206,11 @@
 				[3, [1069.25, 541.765625], 'Police Station Blueprint', 'normal'],
 				[3, [748, 669.03125], '200x Credits', 'normal'],
 				[3, [477.8479630731981, 748.0127212979629], 'Hotel Blueprint', 'normal'],
-				[3, [1125, 816.53125], 'Maid Cafe Blueprint', 'normal'],
+        [3, [776.5, 528], 'Maid Cafe Blueprint', 'normal'],
 				[3, [1251.5, 854.03125], '400x Credits', 'normal'],
 				[3, [832.5, 903.53125], 'Toy Store Blueprint', 'normal'],
 				[3, [909.25, 985.265625], 'Risk – Wandering Soul', 'normal'],
-				[3, [379, 906.53125], 'Train Station Blueprint', 'normal'],
+        [3, [939.5, 907.5], 'Train Station Blueprint', 'normal'],
         // hard mode
         [3, [1221.5, 474], '<strong>Hard campaign:</strong> Hopeless – Wandering Soul', 'hard'],
         [3, [793, 745.5], '<strong>Hard campaign:</strong> Risk dark side – Wandering Soul', 'hard'],
@@ -220,13 +220,13 @@
 				// chapter 4 normal
 				[4, [791, 173.53125], 'Chat Log_Early Adopter.txt – 08:05 PM', 'normal'],
 				[4, [1486, 496.03125], '500x Credits', 'normal'],
-				[4, [1228, 627.03125], 'Workshop Blueprint', 'normal'],
+        [4, [1157, 361.5], 'Workshop Blueprint', 'normal'],
 				[4, [1165.5, 829.03125], 'Chat Log_Early Adopter.txt – 12:01 AM', 'normal'],
 				[4, [1128.5, 940.03125], 'Chat Log_Early Adopter.txt – 09:55 AM', 'normal'],
 				[4, [996, 946.53125], 'Good Day Commander- After World', 'normal'],
-				[4, [945, 915.03125], 'Generator Blueprint', 'normal'],
+        [4, [1093, 963], 'Generator Blueprint', 'normal'],
 				[4, [1007.5, 780.03125], 'Floral Tribute – Wandering Soul', 'normal'],
-				[4, [913, 692.5], 'Armory Blueprint', 'normal'],
+        [4, [889, 580], 'Armory Blueprint', 'normal'],
 				[4, [629.5, 804.5], 'Incoming rapture – Wandering Soul', 'normal'],
 				[4, [625.5, 530.53125], 'Chat Log_Early Adopter.txt – 05:37 PM', 'normal'],
         // hard mode
@@ -236,11 +236,11 @@
         [4, [899, 574], '<strong>Hard campaign:</strong> Floral Tribute prayer – Wandering Soul', 'hard'],
 
 				// chapter 5 normal
-				[5, [973, 413.53125], 'Trendy Bar Blueprint', 'normal'],
+        [5, [1208.5, 778.5], 'Trendy Bar Blueprint', 'normal'],
 				[5, [1072, 576.03125], 'Call Log 017515 – 2:01 PM', 'normal'],
 				[5, [1445, 614.03125], 'x50 Gems', 'normal'],
 				[5, [1294, 772.03125], 'Second Hand – Wonderland', 'normal'],
-				[5, [813.0001658952062, 763.0312902170197], 'Library Blueprint', 'normal'],
+        [5, [554.5, 656], 'Library Blueprint', 'normal'],
 				[5, [483.5, 733.53125], 'Survival Guide 01 – 3. How to sleep', 'normal'],
 				[5, [617, 829.03125], 'Silver mane – Wonderland', 'normal'],
 				[5, [709, 929], 'Hospital Blueprint', 'normal'],
@@ -273,7 +273,7 @@
 
 				// chapter 7 normal
 				[7, [929, 518.03125], 'Call Log 028594 – 10:01 AM', 'normal'],
-				[7, [1292.5, 533.53125], 'Courthouse Blueprint', 'normal'],
+        [7, [1049, 849], 'Courthouse Blueprint', 'normal'],
 				[7, [874, 660.53125], 'Survival Guide 01 – 2. How to Secure Food', 'normal'],
 				[7, [687.5, 746.03125], 'Nikke Subject Recruitment – Outline for Round 1 of Recruitment', 'normal'],
 				[7, [873, 1000], 'Church Blueprint', 'normal'],
