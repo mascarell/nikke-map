@@ -134,7 +134,7 @@
 			}).fitBounds([[0, 0], [1074, 1920]]);
 
 			let chapters = [];
-			for (let i = 1; i <= 26; i++) {
+			for (let i = 1; i <= 28; i++) {
 				chapters[i] = L.layerGroup();
 				if (i === 1) chapters[i].addTo(map);
 
@@ -699,6 +699,52 @@
         [26, [513, 796.5], 'Crack Crack', 'normal'],
         [26, [468, 771], 'Highnoon - Hazards - Trace', 'normal'],
         [26, [456, 658], '24000x Credits', 'normal'],
+
+        // chapter 27 normal
+        [27, [1037, 428], 'x25,000 Credits', 'normal'],
+        [27, [725, 410], 'x50 Gems', 'normal'],
+        [27, [670.5, 598.5], 'Aztec [Scenario Ver] – Unknown', 'normal'],
+        [27, [510, 563], 'yyyy_mm_dd_01.mp3', 'normal'],
+        [27, [1425.7418398642403, 339.35991915219523], 'x25,000 Credits', 'normal'],
+        [27, [1501, 736.5], 'x25,000 Credits', 'normal'],
+        [27, [1279.5, 696.5], 'Aztec – Unknown', 'normal'],
+        [27, [1091, 814], 'x25,000 Credits', 'normal'],
+        [27, [789, 749.5], 'yyyy_mm_dd_02.mp3', 'normal'],
+        [27, [778.5, 808.5], 'IFEEL SO ALIVE – After World', 'normal'],
+        [27, [783.5, 872.5], 'yyyy_mm_dd_03.mp3', 'normal'],
+        [27, [1112, 508], 'yyyy_mm_dd_04.mp3', 'normal'],
+        [27, [1183, 584], 'x25,000 Credits', 'normal'],
+        [27, [980.5, 712], 'Dwn – Unknown', 'normal'],
+        // hard mode
+        [27, [1309.5, 650.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [27, [1365, 436], '<strong>Hard campaign:</strong> Aztec - dust -', 'hard'],
+        [27, [844, 745], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [27, [610, 743.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [27, [837, 883.5], '<strong>Hard campaign:</strong> Dwn - dust -', 'hard'],
+        [27, [780.5, 470], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+
+        // chapter 28 normal
+        [28, [1870.9326652853665, 427.1826666415357], 'x26,000 Credits', 'normal'],
+        [28, [1509, 642], 'x26,000 Credits', 'normal'],
+        [28, [1316.5, 352], 'Destroying Calamity – Unknown', 'normal'],
+        [28, [1384.5, 761.5], 'The Third Piece', 'normal'],
+        [28, [1229.5, 582], 'x26,000 Credits', 'normal'],
+        [28, [1209.5, 835], 'Destroying Calamity -broken silence- Unknown', 'normal'],
+        [28, [1107.5, 805.5], 'The Fourth Piece', 'normal'],
+        [28, [873, 883], 'x26,000 Credits', 'normal'],
+        [28, [791, 670.5], 'x26,000 Credits', 'normal'],
+        [28, [846, 496.5], 'The First Piece', 'normal'],
+        [28, [583.5, 443], 'Over clocker – After World', 'normal'],
+        [28, [330, 670], 'The Second Piece', 'normal'],
+        [28, [505, 680], 'We’re Never Giving up – Unknown', 'normal'],
+        [28, [568, 820.5], 'Destroying Calamity [Scenario Ver] – Unknown', 'normal'],
+        // hard mode
+        [28, [369, 634.5], '<strong>Hard campaign:</strong> Destroyed Serenity', 'hard'],
+        [28, [957.5, 862], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [28, [674, 444.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [28, [1310, 580.5], '<strong>Hard campaign:</strong> Destroyed Serenity - Shranz Mix -', 'hard'],
+        [28, [1512.5, 725.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
+        [28, [1117, 412.5], '<strong>Hard campaign:</strong> x10 core dust', 'hard'],
 			];
 
 			for (const [chapter, coords, popupContent, difficulty] of normalLostRelics) {
@@ -706,7 +752,7 @@
 				L.marker(xy(coords), { icon: currentIcon }).addTo(chapters[chapter]).bindPopup(popupContent, customOptions);
 			}
 
-			let chapterNames = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7", "Chapter 8", "Chapter 9", "Chapter 10", "Chapter 11", "Chapter 12", "Chapter 13", "Chapter 14", "Chapter 15", "Chapter 16", "Chapter 17", "Chapter 18", "Chapter 19", "Chapter 20", "Chapter 21", "Chapter 22", "Chapter 23", "Chapter 24", "Chapter 25", "Chapter 26"];
+			let chapterNames = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6", "Chapter 7", "Chapter 8", "Chapter 9", "Chapter 10", "Chapter 11", "Chapter 12", "Chapter 13", "Chapter 14", "Chapter 15", "Chapter 16", "Chapter 17", "Chapter 18", "Chapter 19", "Chapter 20", "Chapter 21", "Chapter 22", "Chapter 23", "Chapter 24", "Chapter 25", "Chapter 26", "Chapter 27", "Chapter 28"];
 			let chapterLayers = Object.fromEntries(chapterNames.map((name, i) => [name, chapters[i + 1]]));
 
 			L.control.layers(chapterLayers).addTo(map);
