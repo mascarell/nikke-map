@@ -171,11 +171,11 @@
 			};
 
 			// ONLY FOR DEVELOPMENT, click to add marker
-			map.on("click", function(e){
-				let position = xy(e.latlng.lng, e.latlng.lat);
-				let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
-				console.log(`[chapter, [${position.lng}, ${position.lat}], '<strong>Hard campaign:</strong> ', 'hard'],`);
-			});
+			// map.on("click", function(e){
+			// 	let position = xy(e.latlng.lng, e.latlng.lat);
+			// 	let mp = new L.Marker(position, {icon: markerIcon}).addTo(map);
+			// 	console.log(`[chapter, [${position.lng}, ${position.lat}], '<strong>Hard campaign:</strong> ', 'hard'],`);
+			// });
 
 			// full list of lost relics, the biggest part of the code, sadly with wordpress can't really have this somewhere else without breaking my head on the wall
 			// format => [chapter number, coordinates, popup content]
